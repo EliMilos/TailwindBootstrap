@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ejemplo de Bootstrap</title>    
+    <!-- Agregar la hoja de estilo de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Establece el color primario de botstrap, establece el color del texto y el padding,
+    relleno de nivel 3-->
+    <header class="bg-primary text-white p-3"> 
+        <!-- centrar horizontalmente el texto -->
+        <h1 class="text-center">Mi Página de Ejemplo</h1>
+    </header>
+    <!-- contenedor que limita el ancho, agrega margen superior de 4 -->
+    <div class="container mt-4">
+        <!-- establece la base para la barra de navegacion,
+        establecera el comportamiento y como se colapsa en dispositivos pequeños,
+        establece el esquema de color para la barra de color,
+        establece el fondo de la barra de navegación -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- estilo especifico para poner margenes  -->
+            <a class="navbar-brand" href="#">Logo</a>
+            <!--  mostrado cuanto el tamaño de la pantalla es pequeño y las opciones colapsen-->
+            <button class="navbar-toggler" 
+            type="button" 
+            data-toggle="collapse" 
+            data-target="#navbarNav" 
+            aria-controls="navbarNav" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+               <!--  estilizar el icono que se muestra en el menu hamburguesa -->
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- definir un area que colapsara en dispositivos pequeños-->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- estilizar una lista no ordenada -->
+                <ul class="navbar-nav">
+                    <!--estilizar elementos dentro de barra de navegación,
+                        indicar que elemento esta activo  -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Servicios</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- boton primario, margen superior de 3 -->
+        <button class="btn btn-primary mt-3">Botón Principal</button>
+        <!-- boton secundario, margen superior de 3 -->
+        <button class="btn btn-secondary mt-3">Botón Secundario</button>
+        <!-- formato como pequeño aviso, indicador, margen izquierdo de 2 -->
+        <span class="badge badge-info ml-2">Nueva</span>
+        
+        <!-- Alerta de exito-->
+        <div class="alert alert-success mt-3" role="alert">
+            Esta es una alerta de éxito.
+        </div>
+        
+        <!-- Formulario -->
+        <form id="miFormulario" class="mt-3">
+            <!-- organizar y espaciar elementos adecuadamente -->
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" class="form-control" id="correo" name="correo">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        
+        <!-- Tabla para mostrar los datos -->
+        <!-- sistema de diseño adaptable y flexible de tabla -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo Electrónico</th>
+                </tr>
+            </thead>
+            <tbody id="tablaDatos">
+                <!-- Aquí se agregarán los datos del formulario desde el script-->
+            </tbody>
+        </table>
+
+        <!-- Sección de artículos -->
+        <section class="mt-4">
+            <h2>Artículos</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="media">
+                        <img src="https://via.placeholder.com/50" class="mr-3" alt="Imagen de artículo">
+                        <div class="media-body">
+                            <h5 class="mt-0">Título del Artículo 1</h5>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="media">
+                        <img src="https://via.placeholder.com/50" class="mr-3" alt="Imagen de artículo">
+                        <div class="media-body">
+                            <h5 class="mt-0">Título del Artículo 2</h5>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+
+    </div>
+    
+    <!-- Pie de página (Footer) -->
+    <footer class="bg-dark text-white p-3 text-center">
+        &copy; 2023 Mi Empresa - Todos los derechos reservados
+    </footer>
+    
+    <!-- Incluir scripts de Bootstrap y jQuery (necesarios para funcionalidad adicional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- scrip para agregar los datos del formulario a la tabla -->
+    <script>
+        $("#miFormulario").submit(function (e) {
+        e.preventDefault(); 
+        const nombre = $("#nombre").val();
+        const correo = $("#correo").val();
+        
+        // Agregar los datos a la tabla
+        const fila = `<tr><td>${nombre}</td><td>${correo}</td></tr>`;
+        $("#tablaDatos").append(fila);
+        
+        // Limpiar los campos del formulario
+        $("#nombre").val("");
+        $("#correo").val("");
+        });
+    </script>
+
+</body>
+</html>

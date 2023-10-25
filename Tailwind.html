@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ejemplo de Tailwind CSS con Formulario y Tabla</title>
+    
+    <!-- Agregar la hoja de estilo de Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body>
+    <!-- Encabezado (Header) -->
+    <!-- Configuracion del fondo como azul, color del texto blanco y un espaciado de 3 -->
+    <header class="bg-blue-500 text-white p-3">
+        <!-- texto centrado -->
+        <h1 class="text-center text-3xl">Mi Página de Ejemplo</h1>
+    </header>
+    <!--fondo como azul con espaciado 4  -->
+    <nav class="bg-blue-500 p-4">
+        <!-- centrado de elementos horizontalmente con espaciado de 4 -->
+        <ul class="flex justify-center space-x-4">
+            <!-- colos del texto blanco -->
+            <li><a href="#" class="text-white">Inicio</a></li>
+            <li><a href="#" class="text-white">Acerca de</a></li>
+            <li><a href="#" class="text-white">Servicios</a></li>
+            <li><a href="#" class="text-white">Contacto</a></li>
+        </ul>
+    </nav>  
+
+    <!-- Contenedor principal con margen top de 4 y centrado -->
+    <div class="container mx-auto mt-4">
+        <!-- Formulario -->
+        <form id="miFormulario" class="mb-8">
+            <div class="mb-4">
+                <label for="nombre" class="block">Nombre:</label>
+                <input type="text" class="w-full border border-gray-400 p-2" id="nombre" name="nombre">
+            </div>
+            <div class="mb-4">
+                <label for="correo" class="block">Correo electrónico:</label>
+                <input type="email" class="w-full border border-gray-400 p-2" id="correo" name="correo">
+            </div>
+            <!-- Boton azul con texto blanco con formato Tailwind -->
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2">Enviar</button>
+        </form>
+        
+        <!-- Tabla para mostrar los datos del formulario formato Tailwind-->        
+        <table class="table-auto mb-8">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Nombre</th>
+                    <th class="px-4 py-2">Correo Electrónico</th>
+                </tr>
+            </thead>
+            <tbody id="tablaDatos">
+                <!-- Aquí se agregarán los datos del formulario desde e script-->
+            </tbody>
+        </table>
+        
+        <!-- Sección de artículos -->
+        <section class="mt-4">
+            <h2 class="text-2xl mb-4">Artículos</h2>
+            <div class="flex flex-wrap">
+                <div class="w-1/2 p-4">
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <!-- centrado de los items -->
+                        <div class="flex items-center">
+                            <img src="https://via.placeholder.com/50" class="mr-3" alt="Imagen de artículo">
+                            <div>
+                                <!-- fuente como bold del h5 -->
+                                <h5 class="font-bold text-lg">Título del Artículo 1</h5>
+                                <p class="mt-2">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 p-4">
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <div class="flex items-center">
+                            <img src="https://via.placeholder.com/50" class="mr-3" alt="Imagen de artículo">
+                            <div>
+                                <h5 class="font-bold text-lg">Título del Artículo 2</h5>
+                                <p class="mt-2">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Pie de página (Footer) -->
+    <!-- de color gris con letras blancas y texto centrado-->
+    <footer class="bg-gray-800 text-white p-3 text-center">
+        &copy; 2023 Mi Empresa - Todos los derechos reservados
+    </footer>
+    
+    <!-- Scripct para la agregación de los datos del formulario a las tablas-->
+    <script>
+        document.getElementById("miFormulario").addEventListener("submit", function (e) {
+            e.preventDefault();
+            /* Obtencion de los valores del html y carga de datos a la tabla "tablaDatos" */
+            const nombre = document.getElementById("nombre").value;
+            const correo = document.getElementById("correo").value;
+            
+            const tablaDatos = document.getElementById("tablaDatos");
+            const fila = document.createElement("tr");
+            const celdaNombre = document.createElement("td");
+            celdaNombre.textContent = nombre;
+            const celdaCorreo = document.createElement("td");
+            celdaCorreo.textContent = correo;
+            fila.appendChild(celdaNombre);
+            fila.appendChild(celdaCorreo);
+            tablaDatos.appendChild(fila);
+            
+            document.getElementById("nombre").value = "";
+            document.getElementById("correo").value = "";
+        });
+    </script>
+</body>
+</html>
